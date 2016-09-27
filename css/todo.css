@@ -1,4 +1,9 @@
-#todoList {
-margin: 30px 30px;
-padding: 10px;
+html,body{
+  height:100%;
+  margin:auto;
+}
+#todo{
+  width: 100%;
+  position: relative;
+  min-height: 100%;
 }
