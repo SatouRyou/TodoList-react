@@ -1,6 +1,13 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+var style = {
+  container: {
+    backgroundColor: "#ddd",
+    width: 900
+  }
+}
+
 // 一時保存する箇所
 // サーバーアクセス可能な場合、ここではなくサーバーに保存する
 const todoItems = []
@@ -42,27 +49,27 @@ const TodoForm = () => (
 const Todo = () => (
   <div>
     <TodoForm />
-    <table id="todoList">
-     <tr>
-      <th>タイトル</th>
-      <th>詳細</th>
-     </tr>
-     {todoItems.map((item, index) => (
-       <TodoList title={item.title}　detail={item.detail} onDelete={() => deleteItem(index)} />
+    <div id="todoList">
+     <div>
+      <span>タイトル</span>
+      <span>詳細</span>
+     </div>
+     {todoItems.map((item, index, style) => (
+       <TodoList style={style.container}　title={item.title}　detail={item.detail} onDelete={() => deleteItem(index)} />
      ))}
-    </table>
+    </div>
   </div>
 );
 
 // TODOリストを表示させているビュー部分
 const TodoList = ({ title, detail, onDelete }) => (
-    <th>
-     <td>{title}</td>
-     <td>{detail}</td>
-     <td>
+    <div>
+     <span>{title}</span>
+     <span>{detail}</span>
+     <span>
       <button onClick={() => onDelete()}>完了</button>
-     </td>
-    </th>
+     </span>
+    </div>
 );
 
 // 登録ボタンクリック時の関数
